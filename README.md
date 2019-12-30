@@ -1,6 +1,6 @@
 # raspberrypi_exporter
 Prometheus exporter for Raspberry Pi metrics - forked from [github.com/fahlke/raspberrypi_exporter](https://github.com/fahlke/raspberrypi_exporter).
-This version has come to life because the need to monitor a [libreelec on rpi 4](https://libreelec.tv/raspberry-pi-4/) system.
+This version has come to life because of the need to monitor a [libreelec on rpi 4](https://libreelec.tv/raspberry-pi-4/) system. It's assumed to be compatible with any busybox distribution.
 
 ## Prerequisites
 
