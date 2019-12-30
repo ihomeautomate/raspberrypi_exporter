@@ -32,7 +32,7 @@ Check if the metrics are written to disk
 
 Uninstallation
 
-    $ curl -fsSL "https://raw.githubusercontent.com/ihomeautomate/raspberrypi_exporter/master/uninstaller.sh" | sudo bash
+    $ curl -fsSL "https://raw.githubusercontent.com/ihomeautomate/raspberrypi_exporter/master/uninstaller.sh" | bash
 
 ## References
 

@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# check if run as superuser
-if [[ $EUID -ne 0 ]]; then
-  echo "This script must be run as root" 1>&2
-  exit 1
-fi
-
 curl -sL "https://github.com/ihomeautomate/raspberrypi_exporter/archive/master.zip" > "/tmp/raspberrypi_exporter.zip"
 unzip -qq -o "/tmp/raspberrypi_exporter.zip" -d "/tmp"
 
