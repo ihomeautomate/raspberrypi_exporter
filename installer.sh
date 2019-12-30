@@ -6,16 +6,16 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
-curl -sL "https://github.com/fahlke/raspberrypi_exporter/archive/master.zip" > "/tmp/raspberrypi_exporter.zip"
+curl -sL "https://github.com/ihomeautomate/raspberrypi_exporter/archive/master.zip" > "/tmp/raspberrypi_exporter.zip"
 unzip -qq -o "/tmp/raspberrypi_exporter.zip" -d "/tmp"
 
-mkdir -p "/var/lib/node_exporter/textfile_collector"
+mkdir -p "/storage/metrics/textfile_collector"
 
-mv "/tmp/raspberrypi_exporter-master/raspberrypi_exporter" "/usr/local/sbin/"
-chmod +x "/usr/local/sbin/raspberrypi_exporter"
+mv "/tmp/raspberrypi_exporter-master/raspberrypi_exporter" "/storage/metrics/"
+chmod +x "/storage/metrics/raspberrypi_exporter"
 
-mv "/tmp/raspberrypi_exporter-master/raspberrypi_exporter.service" "/etc/systemd/system/"
-mv "/tmp/raspberrypi_exporter-master/raspberrypi_exporter.timer" "/etc/systemd/system/"
+mv "/tmp/raspberrypi_exporter-master/raspberrypi_exporter.service" "/storage/.config/system.d/"
+mv "/tmp/raspberrypi_exporter-master/raspberrypi_exporter.timer" "/storage/.config/system.d/"
 
 systemctl stop raspberrypi_exporter.timer
 systemctl disable raspberrypi_exporter.timer

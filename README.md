@@ -1,10 +1,11 @@
 # raspberrypi_exporter
-Prometheus exporter for Raspberry Pi metrics
+Prometheus exporter for Raspberry Pi metrics - forked from [github.com/fahlke/raspberrypi_exporter](https://github.com/fahlke/raspberrypi_exporter).
+This version has come to life because the need to monitor a [libreelec on rpi 4](https://libreelec.tv/raspberry-pi-4/) system.
 
 ## Prerequisites
 
 - Prometheus node_exporter must be installed
-- node_exporter ```--collector.textfile.directory``` must be set to ```/var/lib/node_exporter/textfile_collector```
+- node_exporter ```--collector.textfile.directory``` must be set to ```/storage/metrics/textfile_collector```
 - ```curl``` must be installed
 - ```vcgencmd``` must be installed (default in Raspbian)
 
@@ -12,7 +13,7 @@ Prometheus exporter for Raspberry Pi metrics
 
 Installation
 
-    $ curl -fsSL "https://raw.githubusercontent.com/fahlke/raspberrypi_exporter/master/installer.sh" | sudo bash
+    $ curl -fsSL "https://raw.githubusercontent.com/ihomeautomate/raspberrypi_exporter/master/installer.sh" | bash
 
 Check if the service is running
 
@@ -31,7 +32,7 @@ Check if the metrics are written to disk
 
 Uninstallation
 
-    $ curl -fsSL "https://raw.githubusercontent.com/fahlke/raspberrypi_exporter/master/uninstaller.sh" | sudo bash
+    $ curl -fsSL "https://raw.githubusercontent.com/ihomeautomate/raspberrypi_exporter/master/uninstaller.sh" | sudo bash
 
 ## References
 

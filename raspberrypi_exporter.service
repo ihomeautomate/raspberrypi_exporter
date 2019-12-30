@@ -4,4 +4,4 @@ Wants=raspberrypi_exporter.timer
 
 [Service]
 Type=oneshot
-ExecStart=/usr/local/sbin/raspberrypi_exporter
+ExecStart=/storage/metrics/raspberrypi_exporter

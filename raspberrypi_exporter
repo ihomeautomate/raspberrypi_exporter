@@ -3,7 +3,7 @@
 set -eu
 
 VCGEN="$(command -v vcgencmd)"
-METRICS_FILE="/var/lib/node_exporter/textfile_collector/raspberrypi-metrics.prom"
+METRICS_FILE="/storage/metrics/textfile_collector/raspberrypi-metrics.prom"
 TMP_FILE="${METRICS_FILE}.tmp"
 PREFIX="rpi_"
 
@@ -32,8 +32,8 @@ done
   echo "# HELP ${PREFIX}frequency Clock frequencies of the components in hertz.";
   echo "# TYPE ${PREFIX}frequency gauge";
 } >> "${TMP_FILE}"
-declare -a FREQ_COMPONENTS=("arm" "core" "h264" "isp" "v3d" "uart" "pwm" "emmc" "pixel" "hdmi")
-for FREQ_COMPONENT in "${FREQ_COMPONENTS[@]}"; do
+FREQ_COMPONENTS='arm core h264 isp v3d uart pwm emmc pixel hdmi'
+for FREQ_COMPONENT in $FREQ_COMPONENTS ; do
   unset FREQUENCE
 
   FREQUENCE="$($VCGEN measure_clock "${FREQ_COMPONENT}" | cut -d '=' -f 2)" || true
@@ -47,8 +47,8 @@ done
   echo "# HELP ${PREFIX}voltage Voltages of the components in volts.";
   echo "# TYPE ${PREFIX}voltage gauge";
 } >> "${TMP_FILE}"
-declare -a VOLT_COMPONENTS=("core" "sdram_c" "sdram_i" "sdram_p")
-for VOLT_COMPONENT in "${VOLT_COMPONENTS[@]}"; do
+VOLT_COMPONENTS='core sdram_c sdram_i sdram_p'
+for VOLT_COMPONENT in $VOLT_COMPONENTS ; do
   unset VOLTS
 
   VOLTS="$($VCGEN measure_volts "${VOLT_COMPONENT}" | cut -d '=' -f 2 | sed 's/V$//')" || true
@@ -62,8 +62,8 @@ done
   echo "# HELP ${PREFIX}memory Memory split of CPU and GPU in bytes.";
   echo "# TYPE ${PREFIX}memory gauge";
 } >> "${TMP_FILE}"
-declare -a MEM_COMPONENTS=("arm" "gpu")
-for MEM_COMPONENT in "${MEM_COMPONENTS[@]}"; do
+MEM_COMPONENTS='arm gpu'
+for MEM_COMPONENT in $MEM_COMPONENTS ; do
   unset MEM
 
   MEM="$($VCGEN get_mem "${MEM_COMPONENT}" | cut -d '=' -f 2 | sed 's/M$//')" || true
